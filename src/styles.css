@@ -1,0 +1,107 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: sans-serif;
+    overflow: hidden; /* Prevent body scrollbars */
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+}
+
+.menu-bar-placeholder {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+.menu-bar-placeholder span {
+    margin-right: 15px;
+    cursor: default;
+}
+
+.main-content {
+    display: flex;
+    flex-grow: 1; /* Takes up remaining vertical space */
+    overflow: hidden; /* Prevent scrollbars here, panels will manage their own */
+}
+
+.panel {
+    display: flex; /* For internal structure like line numbers */
+    flex-direction: column; /* Stack line numbers above content-area if needed, or side-by-side */
+    overflow-y: auto; /* Allow vertical scrolling within panels */
+    border: 1px solid #ccc;
+}
+
+.raw-view {
+    flex-basis: 60%; /* Initial width */
+    display: flex; /* Override column, make it row for line numbers */
+    flex-direction: row;
+}
+.raw-view .line-numbers {
+    width: 50px; /* Fixed width for line numbers */
+    padding: 5px;
+    background-color: #f8f8f8;
+    border-right: 1px solid #ddd;
+    text-align: right;
+    overflow: hidden;
+    user-select: none;
+}
+.raw-view .content-area {
+    flex-grow: 1;
+    padding: 5px;
+    font-family: monospace;
+    white-space: pre; /* Preserve whitespace, but allow wrapping if lines are too long */
+    overflow-y: scroll; /* This will be the main scrollable area for raw view */
+}
+.raw-view .content-area div.active-line {
+    background-color: #e0e0ff; /* Or any highlight color you prefer */
+}
+
+
+.pretty-json-view {
+    flex-basis: 40%; /* Initial width */
+}
+.pretty-json-view .content-area {
+    padding: 10px;
+    font-family: monospace;
+    overflow-y: auto; /* Scroll if content overflows */
+}
+.pretty-json-view .content-area pre {
+   margin: 0; /* Reset pre margin */
+   white-space: pre-wrap; /* Wrap long lines in JSON */
+   word-break: break-all; /* Break long strings if necessary */
+}
+
+
+.resizer {
+    flex-basis: 5px;
+    background-color: #eee;
+    cursor: col-resize;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.search-replace-bar {
+    padding: 8px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+    display: flex; /* Use flex for layout */
+    align-items: center;
+    gap: 5px; /* Space between elements */
+}
+.search-replace-bar input[type="text"] {
+    flex-grow: 1; /* Allow input fields to take available space */
+    min-width: 100px;
+}
+
+.status-bar {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+}
