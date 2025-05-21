@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolphin Editor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Menu Bar (Placeholder - actual menus are often native or require more setup with Tauri) -->
+        <div class="menu-bar-placeholder">
+            <span>File</span>
+            <span>Edit</span>
+            <span>View</span>
+        </div>
+
+        <div class="main-content">
+            <!-- Raw View Panel -->
+            <div id="raw-view-panel" class="panel raw-view">
+                <div class="line-numbers">
+                    <!-- Line numbers will be populated by JS -->
+                </div>
+                <div id="raw-view-content" class="content-area">
+                    <!-- Raw lines will be populated by JS (virtualized) -->
+                </div>
+            </div>
+
+            <!-- Resizer (Placeholder for now, actual implementation later) -->
+            <div class="resizer" id="panel-resizer"></div>
+
+            <!-- Pretty JSON Panel -->
+            <div id="pretty-json-panel" class="panel pretty-json-view">
+                <div id="pretty-json-content" class="content-area">
+                    <!-- Pretty printed JSON will appear here -->
+                    <pre></pre> <!-- Use pre for formatted JSON -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Search/Replace Bar (Initially Hidden) -->
+        <div id="search-replace-bar" class="search-replace-bar" style="display: none;">
+            <input type="text" id="find-input" placeholder="Find (regex)...">
+            <input type="text" id="replace-input" placeholder="Replace with...">
+            <button id="toggle-case">Aa</button>
+            <button id="toggle-regex">.*</button>
+            <button id="prev-match">Prev</button>
+            <button id="next-match">Next</button>
+            <button id="replace-btn">Replace</button>
+            <button id="replace-all-btn">Replace All</button>
+            <span id="match-count">0 of 0 matches</span>
+            <button id="close-search-bar">X</button>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span id="status-file-path">No file open</span>
+            <span id="status-cursor-pos">Ln 0, Col 0</span>
+            <span id="status-total-lines">Total Lines: 0</span>
+            <span id="status-indexing">Ready</span>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <!-- If RawView.js and PrettyJsonView.js are separate modules and not imported by main.js:
+    <script src="components/RawView.js"></script>
+    <script src="components/PrettyJsonView.js"></script>
+    -->
+</body>
+</html>
